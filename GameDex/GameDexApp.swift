@@ -11,7 +11,8 @@ import SwiftUI
 struct GameDexApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            GameDexTabView()
         }
     }
 }
