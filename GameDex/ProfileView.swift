@@ -1,103 +1,55 @@
-//import SwiftUI
-//
-//struct ProfileView: View {
-//    var profileList = ["Plateformes", "Favoris", "Historique", "Contact", "Nous soutenir"]
-//    var body: some View {
-//        ScrollView {
-//            VStack (alignment: .leading) {
-//                Spacer().frame(height: 40)
-//                Text("Vous etés dans")
-//                    .foregroundStyle(Color(.text))
-//                    .font(.system(size: 13))
-//                Spacer().frame(height: 10)
-//                Text("Vos parameters")
-//                    .foregroundStyle(.white)
-//                    .font(.system(size: 30))
-//                Spacer().frame(height: 40)
-//                HStack(spacing: 15) {
-//                    Circle()
-//                        .stroke(Color(.accent), lineWidth: 1)
-//                        .frame(width: 80, height: 80)
-//                    VStack(alignment: .leading, spacing: 5) {
-//                        Text("Charles Ayomide")
-//                            .bold()
-//                            .font(.system(size: 16))
-//                        Text("Nouveau")
-//                            .foregroundStyle(Color(.text))
-//                            .font(.system(size: 14))
-//                    }
-//                }
-//                Spacer().frame(height: 30)
-//                VStack(spacing: 0) {
-//                    ForEach(profileList, id: \.description) { profile in
-//                        HStack(spacing: 32) {
-//                            Image(systemName: "house.fill")
-//                                .frame(width: 20)
-//                                .foregroundStyle(.accent)
-//                            Text(profile)
-//                                .font(.system(size: 16))
-//                            Spacer()
-//                        }
-//                        .padding(.vertical, 25)
-//                        Divider()
-//                            .background(Color(.background))
-//                    }
-//                }        }
-//            .padding()
-//            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-//            .background(Color(.background2))
-//            .foregroundStyle(.white)
-//            .toolbar(.hidden, for: .tabBar)
-//        }
-//        Button("Hello"){}
-//            .buttonStyle(.bordered)
-//        
-//    }
-//}
-//
-//#Preview {
-//    ProfileView()
-//}
-
-
-
 import SwiftUI
 
 struct ProfileView: View {
-    var profileList = ["Plateformes", "Favoris", "Historique", "Contact", "Nous soutenir"]
+    
+    struct ProfileItem {
+        let icon: String
+        let label: String
+    }
+    var profileList: [ProfileItem] = [
+        ProfileItem(icon: "gamecontroller.fill", label: "Platforms"),
+        ProfileItem(icon: "heart.fill", label: "Favourites"),
+        ProfileItem(icon: "clock.fill", label: "History"),
+        ProfileItem(icon: "envelope.fill", label: "Contact"),
+        ProfileItem(icon: "hand.raised.fill", label: "Support Us")
+    ]
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 Spacer().frame(height: 20)
-                Text("Vous etés dans")
+                Text("You are in")
                     .foregroundStyle(Color(.text))
                     .font(.system(size: 13))
                 Spacer().frame(height: 10)
-                Text("Vos parameters")
+                Text("Your settings")
                     .foregroundStyle(.white)
-                    .font(.system(size: 30))
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
                 Spacer().frame(height: 40)
                 HStack(spacing: 15) {
-                    Circle()
-                        .stroke(Color(.accent), lineWidth: 1)
+                    Image("COD")
+                        .resizable()
+                        .scaledToFill()
                         .frame(width: 80, height: 80)
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(Color(.accent), lineWidth: 1))
                     VStack(alignment: .leading, spacing: 5) {
                         Text("Charles Ayomide")
                             .bold()
                             .font(.system(size: 16))
-                        Text("Nouveau")
+                        Text("New")
                             .foregroundStyle(Color(.text))
                             .font(.system(size: 14))
                     }
                 }
                 Spacer().frame(height: 30)
                 VStack(spacing: 0) {
-                    ForEach(profileList, id: \.description) { profile in
+                    ForEach(profileList, id: \.label) { profile in
                         HStack(spacing: 32) {
-                            Image(systemName: "house.fill")
+                            Image(systemName: profile.icon)
                                 .frame(width: 20)
                                 .foregroundStyle(.accent)
-                            Text(profile)
+                            Text(profile.label)
                                 .font(.system(size: 16))
                             Spacer()
                         }
@@ -112,13 +64,12 @@ struct ProfileView: View {
                 } label: {
                     HStack(spacing: 10) {
                         Image(systemName: "rectangle.portrait.and.arrow.right")
-                        Text("Se déconnecter")
+                        Text("Sign Out")
                     }
                     .frame(maxWidth: .infinity, minHeight: 50)
                     .background(.red)
                     .cornerRadius(12)
                 }
-
             }
             .padding()
             .frame(maxWidth: .infinity, alignment: .topLeading)

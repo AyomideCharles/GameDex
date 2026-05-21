@@ -1,45 +1,9 @@
-//
-//  HomeView.swift
-//  GameDex
-//
-//  Created by Charles on 4/9/26.
-//
-
 import SwiftUI
 
 struct HomeView: View {
     var body: some View {
         VStack(alignment: .leading) {
-            HStack{
-                HStack {
-                    NavigationLink(destination: ProfileView()) {
-                        Circle()
-                            .stroke(Color(.accent), lineWidth: 1)
-                            .frame(width: 50, height: 50)
-                    }
-                    VStack(alignment: .leading) {
-                        Text("Nouvea")
-                            .foregroundStyle(Color(.text))
-                            .font(.system(size: 11))
-                        Text("Hey Charles!")
-                            .font(.system(size: 13))
-                    }
-
-                }
-                Spacer()
-
-                ZStack(alignment: .center) {
-                    Circle()
-                        .stroke(Color(.text), lineWidth: 1)
-                        .frame(width: 50, height: 50)
-                    Image(systemName: "house.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 24, height: 24)
-                        .foregroundStyle(.white)
-                }
-            }
-            
+            ProfileHeader()
             Spacer().frame(height: 30)
             VStack(alignment: .leading) {
                 Text("Explorons")
@@ -47,16 +11,30 @@ struct HomeView: View {
                     .font(.system(size: 13))
                 Text("Jeux")
                     .foregroundStyle(.white)
-                    .font(.system(size: 30))
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
                 Spacer().frame(height: 40)
-                HStack {
+                HStack(spacing: 15) {
                     Text("Populaires")
+                        .font(.system(size: 14, weight: .semibold))
                     Text("Nouveaux")
+                        .font(.system(size: 14, weight: .semibold))
                     Text("Recommdés")
+                        .font(.system(size: 14, weight: .semibold))
                 }
                 .font(.system(size: 13))
 
             }
+            TabView {
+                NavigationLink(destination: GameDetailsView()) {
+                    CardView(image: "tomb", name: "Tomb Raider", subtitle: "Ubisoft")
+                }
+                CardView(image: "COD", name: "Call of Duty", subtitle: "Infinity ward")
+                CardView(image: "battle", name: "Battle Field", subtitle: "EA")
+            }
+            .background(Color(.background2))
+            .tabViewStyle(.page)
+                
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
@@ -69,3 +47,45 @@ struct HomeView: View {
 #Preview {
     HomeView()
 }
+
+struct CardView: View{
+    
+    let image: String
+    let name: String
+    let subtitle: String
+    
+    var body: some View{
+        ZStack (alignment: .bottom) {
+            Image(image)
+                .resizable()
+                .scaledToFill()
+                .clipped()
+                .frame(width: 292, height: 396)
+            HStack {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(name)
+                        .font(.system(size: 15, weight: .bold))
+                    Text(subtitle)
+                        .font(.system(size: 12))
+                }
+                Spacer()
+                Image(systemName: "arrow.right")
+                    .font(.system(size: 14, weight: .bold))
+
+
+            }
+            .foregroundStyle(.white)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 14)
+            .background(.gray).opacity(0.8)
+            .cornerRadius(28)
+            .padding(.horizontal, 16)
+            .padding(.bottom, 16)
+            
+        }
+        .frame(width: .infinity, height: 396)
+        .cornerRadius(30)
+    }
+}
+
+

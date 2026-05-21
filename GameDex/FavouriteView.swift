@@ -1,10 +1,3 @@
-//
-//  FavouriteView.swift
-//  GameDex
-//
-//  Created by Charles on 4/9/26.
-//
-
 import SwiftUI
 
 let gradientColors: [Color] = [
@@ -24,7 +17,7 @@ struct FavouriteView: View {
                     .font(.system(size: 13))
                 Text("Favoris")
                     .foregroundStyle(.white)
-                    .font(.system(size: 30))
+                    .font(.largeTitle)                    .fontWeight(.bold)
                 Spacer().frame(height: 40)
                 HStack {
                     Text("Aventure")
@@ -36,11 +29,13 @@ struct FavouriteView: View {
                 Spacer().frame(height: 15)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 15) {
-                        GameView()
-                        GameView()
-                        GameView()
-                        GameView()
-                        GameView()
+                        NavigationLink(destination: GameDetailsView()) {
+                            GameView(gameImage: "ghost", gameName: "Ghost of Tshuma")
+                        }
+                        GameView(gameImage: "tomb", gameName: "Tomb Raider")
+                        GameView(gameImage: "creed", gameName: "Assassins Creeed")
+                        GameView(gameImage: "battle", gameName: "Battlefield")
+                        GameView(gameImage: "COD", gameName: "Call of duty")
 
                     }
                 }
@@ -55,11 +50,11 @@ struct FavouriteView: View {
                 Spacer().frame(height: 15)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 15) {
-                        GameView()
-                        GameView()
-                        GameView()
-                        GameView()
-                        GameView()
+                        GameView(gameImage: "creed", gameName: "String")
+                        GameView(gameImage: "battle", gameName: "String")
+                        GameView(gameImage: "tomb", gameName: "String")
+                        GameView(gameImage: "ghost", gameName: "String")
+                        GameView(gameImage: "COD", gameName: "String")
 
                     }
                 }
@@ -74,11 +69,11 @@ struct FavouriteView: View {
                 Spacer().frame(height: 15)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 15) {
-                        GameView()
-                        GameView()
-                        GameView()
-                        GameView()
-                        GameView()
+                        GameView(gameImage: "COD", gameName: "String")
+                        GameView(gameImage: "ghost", gameName: "String")
+                        GameView(gameImage: "battle", gameName: "String")
+                        GameView(gameImage: "tomb", gameName: "String")
+                        GameView(gameImage: "creed", gameName: "String")
 
                     }
                 }
@@ -100,9 +95,22 @@ struct FavouriteView: View {
 }
 
 struct GameView:View {
+    let gameImage: String
+    let gameName: String
     var body: some View {
-        RoundedRectangle(cornerRadius: 30)
-            .frame(width: 98, height: 98)
-            .foregroundStyle(Color(.sRGB, red: 0.1412, green: 0.1569, blue: 0.1843, opacity: 1.0))
+        VStack {
+            Image(gameImage)
+                .resizable()
+                .scaledToFill()
+                .clipped()
+                .frame(width: 98, height: 98)
+                .cornerRadius(30)
+//            RoundedRectangle(cornerRadius: 30)
+//                .frame(width: 98, height: 98)
+//                .foregroundStyle(Color(.sRGB, red: 0.1412, green: 0.1569, blue: 0.1843, opacity: 1.0))
+            Spacer().frame(height: 10)
+            Text(gameName)
+                .font(.caption)
+        }
     }
 }

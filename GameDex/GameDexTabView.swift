@@ -11,13 +11,15 @@ struct GameDexTabView: View {
                     }
                 }
                 Tab("", systemImage: "heart.fill"){
-                    FavouriteView()
+                    NavigationStack {
+                        FavouriteView()
+                    }
                 }
                 Tab("", systemImage: "person.crop.circle.fill"){
                     TipsView()
                 }
                 Tab("", systemImage: "message.fill"){
-                    FavouriteView()
+                    ChatView()
                 }
             }
         }

@@ -12,9 +12,16 @@ struct ProfileHeader: View {
         HStack{
             HStack {
                 NavigationLink(destination: ProfileView()) {
-                    Circle()
-                        .stroke(Color(.accent), lineWidth: 1)
-                        .frame(width: 50, height: 50)
+                    ZStack(alignment: .center) {
+                        Circle()
+                            .stroke(Color(.accent), lineWidth: 1)
+                            .frame(width: 50, height: 50)
+                        Image(systemName: "person.fill")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 24, height: 24)
+                            .foregroundStyle(.white)
+                    }
                 }
                 VStack(alignment: .leading) {
                     Text("Nouvea")
@@ -30,13 +37,14 @@ struct ProfileHeader: View {
                 Circle()
                     .stroke(Color(.text), lineWidth: 1)
                     .frame(width: 50, height: 50)
-                Image(systemName: "house.fill")
+                Image(systemName: "circle.grid.cross.right.fill")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 24, height: 24)
                     .foregroundStyle(.white)
             }
         }
+
     }
 }
 
