@@ -6,31 +6,36 @@ struct HomeView: View {
             ProfileHeader()
             Spacer().frame(height: 30)
             VStack(alignment: .leading) {
-                Text("Explorons")
+                Text("Let's explore")
                     .foregroundStyle(Color(.text))
                     .font(.system(size: 13))
-                Text("Jeux")
+                Text("Games")
                     .foregroundStyle(.white)
                     .font(.largeTitle)
                     .fontWeight(.bold)
                 Spacer().frame(height: 40)
                 HStack(spacing: 15) {
-                    Text("Populaires")
+                    Text("Popular")
                         .font(.system(size: 14, weight: .semibold))
-                    Text("Nouveaux")
+                    Text("New")
                         .font(.system(size: 14, weight: .semibold))
-                    Text("Recommdés")
+                    Text("Recommended")
                         .font(.system(size: 14, weight: .semibold))
                 }
                 .font(.system(size: 13))
 
             }
             TabView {
-                NavigationLink(destination: GameDetailsView()) {
+                NavigationLink(destination: GameDetailsView(gameName: "Tomb Raider", gameImage: "tomb")  ) {
                     CardView(image: "tomb", name: "Tomb Raider", subtitle: "Ubisoft")
                 }
-                CardView(image: "COD", name: "Call of Duty", subtitle: "Infinity ward")
-                CardView(image: "battle", name: "Battle Field", subtitle: "EA")
+                NavigationLink(destination: GameDetailsView(gameName: "Call of Duty", gameImage: "COD")) {
+                    CardView(image: "COD", name: "Call of Duty", subtitle: "Infinity Ward")
+                }
+
+                NavigationLink(destination: GameDetailsView(gameName: "Battle Field", gameImage: "battle")) {
+                    CardView(image: "battle", name: "Battle Field", subtitle: "EA")
+                }
             }
             .background(Color(.background2))
             .tabViewStyle(.page)

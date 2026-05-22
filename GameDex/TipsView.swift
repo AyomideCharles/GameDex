@@ -7,11 +7,11 @@ struct TipsView: View {
                 ProfileHeader()
                 Spacer().frame(height: 30)
                 VStack(alignment: .leading) {
-                    Text("Dernieres")
+                    Text("Latest")
                         .foregroundStyle(Color(.text))
                         .font(.system(size: 13))
                     HStack(alignment: .center) {
-                        Text("Astuces")
+                        Text("Tips")
                             .foregroundStyle(.white)
                             .font(.system(size: 30))
                         Spacer()

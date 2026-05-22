@@ -3,6 +3,9 @@ import SwiftUI
 struct GameDetailsView: View {
     @State private var selectedTab = 0
     @State private var selectedQuest: String? = nil
+    
+    let gameName : String
+    let gameImage: String
 
     let tabs = ["Weekly Quests", "Mid-Season Deliveries", "Quests"]
 
@@ -10,7 +13,7 @@ struct GameDetailsView: View {
         GeometryReader { geo in
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 0) {
-                    Image("COD")
+                    Image(gameImage)
                         .resizable()
                         .scaledToFill()
                         .frame(width: geo.size.width, height: 400)
@@ -24,8 +27,8 @@ struct GameDetailsView: View {
                                     .font(.caption)
                                     .foregroundColor(.gray)
                                 HStack(spacing: 8) {
-                                    Text("Fortnite")
-                                        .font(.largeTitle)
+                                    Text(gameName)
+                                        .font(.title)
                                         .fontWeight(.bold)
                                         .foregroundColor(.white)
                                     Image(systemName: "heart.fill")
@@ -164,5 +167,5 @@ extension String: @retroactive Identifiable {
 }
 
 #Preview {
-    GameDetailsView()
+    GameDetailsView(gameName: "Fortnite", gameImage: "COD")
 }

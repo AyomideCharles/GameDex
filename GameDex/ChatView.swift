@@ -15,11 +15,11 @@ struct ChatView: View {
             Text("Buy me a coffee")
                 .foregroundStyle(Color(.text))
                 .font(.system(size: 13))
-            Text("À propos")
+            Text("About")
                 .foregroundStyle(.white)
                 .font(.system(size: 30))
             Spacer().frame(height: 30)
-            Text("Qui somme nous")
+            Text("Who we are")
                 .font(.system(size: 13))
                 .bold()
             
@@ -28,7 +28,7 @@ struct ChatView: View {
                 .font(.system(size: 13))
                 .foregroundStyle(Color(.text))
             Spacer().frame(height: 30)
-            Text("Notre but")
+            Text("Our goal")
                 .font(.system(size: 13))
                 .bold()
             
@@ -42,7 +42,7 @@ struct ChatView: View {
             } label: {
                 HStack(spacing: 10) {
                     Image(systemName: "heart.fill")
-                    Text("Soutenir")
+                    Text("Support")
                 }
                 .frame(maxWidth: .infinity, minHeight: 50)
                 .background(.blue)

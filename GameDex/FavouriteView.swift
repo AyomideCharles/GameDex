@@ -12,15 +12,15 @@ struct FavouriteView: View {
             ProfileHeader()
             Spacer().frame(height: 40)
             VStack(alignment: .leading) {
-                Text("Jeux")
+                Text("Games")
                     .foregroundStyle(Color(.text))
                     .font(.system(size: 13))
-                Text("Favoris")
+                Text("Favourites")
                     .foregroundStyle(.white)
                     .font(.largeTitle)                    .fontWeight(.bold)
                 Spacer().frame(height: 40)
                 HStack {
-                    Text("Aventure")
+                    Text("Adventure")
                         .font(.system(size: 13))
                     Text("(1)")
                         .font(.system(size: 13))
@@ -29,9 +29,10 @@ struct FavouriteView: View {
                 Spacer().frame(height: 15)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 15) {
-                        NavigationLink(destination: GameDetailsView()) {
-                            GameView(gameImage: "ghost", gameName: "Ghost of Tshuma")
-                        }
+//                        NavigationLink(destination: GameDetailsView(gameName: "Ghost of Tshushima", gameImage: "ghost")) {
+//                            GameView(gameImage: "ghost", gameName: "Ghost of Tshushima")
+//                        }
+                        GameView(gameImage: "ghost", gameName: "Ghost of Tshushima")
                         GameView(gameImage: "tomb", gameName: "Tomb Raider")
                         GameView(gameImage: "creed", gameName: "Assassins Creeed")
                         GameView(gameImage: "battle", gameName: "Battlefield")
@@ -60,7 +61,7 @@ struct FavouriteView: View {
                 }
                 Spacer().frame(height: 40)
                 HStack {
-                    Text("Horreur")
+                    Text("Horror")
                         .font(.system(size: 13))
                     Text("(1)")
                         .font(.system(size: 13))
@@ -94,23 +95,42 @@ struct FavouriteView: View {
     FavouriteView()
 }
 
-struct GameView:View {
+
+struct GameView: View {
     let gameImage: String
     let gameName: String
+
     var body: some View {
-        VStack {
-            Image(gameImage)
-                .resizable()
-                .scaledToFill()
-                .clipped()
-                .frame(width: 98, height: 98)
-                .cornerRadius(30)
-//            RoundedRectangle(cornerRadius: 30)
-//                .frame(width: 98, height: 98)
-//                .foregroundStyle(Color(.sRGB, red: 0.1412, green: 0.1569, blue: 0.1843, opacity: 1.0))
-            Spacer().frame(height: 10)
-            Text(gameName)
-                .font(.caption)
+        NavigationLink(destination: GameDetailsView(gameName: gameName, gameImage: gameImage)) {
+            VStack {
+                Image(gameImage)
+                    .resizable()
+                    .scaledToFill()
+                    .clipped()
+                    .frame(width: 98, height: 98)
+                    .cornerRadius(30)
+                Spacer().frame(height: 10)
+                Text(gameName)
+                    .font(.caption)
+            }
         }
     }
 }
+
+//struct GameView:View {
+//    let gameImage: String
+//    let gameName: String
+//    var body: some View {
+//        VStack {
+//            Image(gameImage)
+//                .resizable()
+//                .scaledToFill()
+//                .clipped()
+//                .frame(width: 98, height: 98)
+//                .cornerRadius(30)
+//            Spacer().frame(height: 10)
+//            Text(gameName)
+//                .font(.caption)
+//        }
+//    }
+//}
